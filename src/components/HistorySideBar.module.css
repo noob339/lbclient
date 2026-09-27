@@ -3,10 +3,12 @@
     flex-direction: column;
     min-width: 0;
     height: 100vh;
-    padding: 20px 14px;
+    height: 100dvh;
+    padding: 30px 14px 24px;
     overflow-y: auto;
     border-right: 1px solid var(--lb-border);
-    background: var(--lb-surface);
+    background: linear-gradient(160deg, #151827, #0e111c 65%);
+    box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.015);
 }
 
 .header {
@@ -18,9 +20,11 @@
 }
 
 .title {
-    color: var(--lb-text);
-    font-size: 14px;
+    color: var(--lb-text-muted);
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
 }
 
 .newChatButton {
@@ -32,8 +36,9 @@
     padding: 0;
     border: 1px solid var(--lb-border);
     border-radius: 8px;
-    background: transparent;
-    color: var(--lb-text);
+    background: linear-gradient(145deg, #252a41, #191d30);
+    color: var(--lb-accent);
+    box-shadow: var(--lb-sheen);
     font-size: 20px;
     line-height: 1;
     cursor: pointer;
@@ -41,21 +46,21 @@
 
 .newChatButton:hover {
     border-color: var(--lb-focus);
-    background: var(--lb-bg);
+    background: var(--lb-surface-raised);
 }
 
 .history {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .threadButton {
     width: 100%;
-    padding: 10px;
+    padding: 12px 10px;
     overflow: hidden;
-    border: 0;
-    border-radius: 8px;
+    border: 1px solid transparent;
+    border-radius: 10px;
     background: transparent;
     color: var(--lb-text-muted);
     font-family: inherit;
@@ -64,21 +69,25 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .threadButton:hover {
-    background: var(--lb-bg);
+    background: rgba(147, 157, 212, 0.07);
     color: var(--lb-text);
 }
 
 .active {
-    background: var(--lb-bg);
-    color: var(--lb-text);
+    background: linear-gradient(115deg, rgba(135, 107, 228, 0.2), rgba(102, 128, 220, 0.08));
+    border-color: rgba(170, 145, 255, 0.2);
+    box-shadow: var(--lb-sheen);
+    color: #ded5ff;
     font-weight: 500;
 }
 
 .demoLabel {
     margin: auto 6px 0;
+    padding-top: 24px;
     color: var(--lb-text-muted);
     font-size: 11px;
 }

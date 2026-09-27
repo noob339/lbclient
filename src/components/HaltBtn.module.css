@@ -1,9 +1,10 @@
 .haltBtn {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
   border: 1px solid var(--lb-border);
-  background: var(--lb-surface);
+  background: linear-gradient(145deg, #272c43, #1b2033);
+  box-shadow: var(--lb-sheen);
   color: var(--lb-text-muted);
   display: flex;
   align-items: center;
@@ -13,12 +14,12 @@
 }
 
 .haltBtn:not(:disabled) {
-  border-color: var(--lb-control);
-  color: var(--lb-control);
+  border-color: var(--lb-accent);
+  color: var(--lb-accent);
 }
 
 .haltBtn:hover:not(:disabled) {
-  background: var(--lb-bg);
+  background: #30304d;
 }
 
 .haltBtn:disabled {

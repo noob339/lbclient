@@ -1,19 +1,21 @@
 .submitBtn {
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 50%;
-  background: var(--lb-control);
-  color: var(--lb-surface);
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(235, 227, 255, 0.3);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #c0afff, #9378ed 55%, #738ee9);
+  color: #151126;
+  box-shadow: var(--lb-sheen), 0 3px 16px rgba(136, 104, 231, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.12s ease, background 0.12s ease;
+  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: var(--lb-control-hover);
+  filter: brightness(1.12);
+  box-shadow: var(--lb-sheen), 0 3px 20px rgba(136, 104, 231, 0.4);
 }
 
 .submitBtn:active:not(:disabled) {
@@ -21,8 +23,10 @@
 }
 
 .submitBtn:disabled {
-  background: #c7c7c3;
-  color: #777773;
+  background: #2a2e46;
+  border-color: var(--lb-border);
+  color: #8791b1;
+  box-shadow: var(--lb-sheen);
   cursor: not-allowed;
 }
 

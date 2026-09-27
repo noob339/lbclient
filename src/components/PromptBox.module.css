@@ -1,15 +1,16 @@
 .promptBox {
   flex-shrink: 0;
-  border: 1px solid var(--lb-border);
-  border-radius: 12px;
-  background: var(--lb-surface);
-  padding: 14px;
+  border: 1px solid rgba(168, 153, 237, 0.24);
+  border-radius: 18px;
+  background: linear-gradient(130deg, #20243a, #161a2b 65%, #1c2035);
+  padding: 18px;
+  box-shadow: var(--lb-sheen), 0 12px 40px rgba(0, 0, 0, 0.22);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .promptBox:focus-within {
   border-color: var(--lb-focus);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--lb-sheen), 0 0 0 3px var(--lb-glow), 0 12px 40px rgba(0, 0, 0, 0.22);
 }
 
 .textarea {
@@ -23,6 +24,7 @@
   line-height: 1.5;
   min-height: 96px;
   padding: 2px 2px 12px;
+  caret-color: var(--lb-accent);
 }
 
 .textarea:focus {

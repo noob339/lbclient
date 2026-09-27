@@ -1,16 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --lb-bg: #14100f;
-  --lb-surface: #1d1817;
-  --lb-surface-raised: #241e1d;
-  --lb-border: #2e2624;
-  --lb-red: #d7263d;
-  --lb-red-dark: #a81e30;
-  --lb-red-glow: rgba(215, 38, 61, 0.32);
-  --lb-spot: #0b0908;
-  --lb-text: #f3ece9;
-  --lb-text-muted: #a89490;
+  color-scheme: dark;
+  --lb-bg: #0b0d16;
+  --lb-surface: #121522;
+  --lb-surface-raised: #1b2033;
+  --lb-border: rgba(173, 185, 239, 0.13);
+  --lb-text: #edf0ff;
+  --lb-text-muted: #9aa5c4;
+  --lb-accent: #b7a4ff;
+  --lb-blue: #8aaeff;
+  --lb-focus: #a997ff;
+  --lb-glow: rgba(139, 111, 255, 0.16);
+  --lb-sheen: inset 0 1px 0 rgba(224, 230, 255, 0.07);
 
   --lb-font-display: 'Space Grotesk', sans-serif;
   --lb-font-body: 'Inter', system-ui, sans-serif;
@@ -19,6 +21,8 @@
 
 * {
   box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #373c57 transparent;
 }
 
 html,
@@ -40,8 +44,13 @@ button {
 }
 
 :focus-visible {
-  outline: 2px solid var(--lb-red);
+  outline: 2px solid var(--lb-focus);
   outline-offset: 2px;
+}
+
+::selection {
+  background: #59478e;
+  color: #ffffff;
 }
 
 @media (prefers-reduced-motion: reduce) {
