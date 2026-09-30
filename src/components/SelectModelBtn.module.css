@@ -1,0 +1,12 @@
+.selectModelBtn {
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(180, 184, 194, 0.2);
+  border-radius: 12px;
+  background: linear-gradient(145deg, #35373e, #292b32);
+  color: #b8bbc4;
+  box-shadow: var(--lb-sheen);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: default;
+}

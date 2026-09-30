@@ -1,6 +1,7 @@
 import styles from './PromptBox.module.css';
 import HaltBtn from './HaltBtn';
 import SubmitBtn from './SubmitBtn';
+import SelectModelBtn from './SelectModelBtn';
 
 export default function PromptBox({
   prompt,
@@ -28,6 +29,7 @@ export default function PromptBox({
       />
 
       <div className={styles.controls}>
+        <SelectModelBtn />
         <HaltBtn onClick={onHalt} disabled={!querying} />
         <SubmitBtn onClick={onSubmit} disabled={querying || !prompt.trim()} />
       </div>
