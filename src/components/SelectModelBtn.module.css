@@ -1,4 +1,15 @@
+.wrapper {
+  position: relative;
+  min-width: 0;
+}
+
 .selectModelBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(260px, 100%);
+  overflow: hidden;
   min-height: 38px;
   padding: 0 14px;
   border: 1px solid rgba(180, 184, 194, 0.2);
@@ -8,5 +19,54 @@
   box-shadow: var(--lb-sheen);
   font-size: 13px;
   font-weight: 500;
-  cursor: default;
+  cursor: pointer;
+  transition: border-color 0.15s ease, filter 0.15s ease;
+}
+
+.selectModelBtn:hover {
+  filter: brightness(1.15);
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.success {
+  border-color: rgba(114, 222, 165, 0.4);
+  background: linear-gradient(145deg, #254c3d, #18392e);
+  color: #b9f6d4;
+}
+
+.failure {
+  border-color: rgba(255, 133, 145, 0.4);
+  background: linear-gradient(145deg, #572d3a, #3d202b);
+  color: #ffccd2;
+}
+
+.sheen {
+  position: absolute;
+  top: -50%;
+  bottom: -50%;
+  left: 0;
+  width: 50%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(210, 255, 229, 0.5), transparent);
+  animation: sheen 0.7s ease-out forwards;
+}
+
+.failure .sheen {
+  background: linear-gradient(90deg, transparent, rgba(255, 175, 183, 0.5), transparent);
+}
+
+@keyframes sheen {
+  from { transform: translateX(-150%) skewX(-25deg); }
+  to { transform: translateX(300%) skewX(-25deg); }
 }

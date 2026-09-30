@@ -1,0 +1,91 @@
+.panel {
+  position: absolute;
+  z-index: 10;
+  bottom: calc(100% + 12px);
+  right: 0;
+  width: 300px;
+  max-width: calc(100vw - 84px);
+  padding: 10px;
+  border: 1px solid rgba(168, 153, 237, 0.26);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #24283e, #151928 75%);
+  box-shadow: var(--lb-sheen), 0 16px 48px rgba(0, 0, 0, 0.45);
+  transform-origin: bottom right;
+  animation: open 0.16s ease-out;
+}
+
+.heading {
+  margin: 5px 8px 10px;
+  color: var(--lb-text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.activeModel {
+  margin: 0 8px 10px;
+  color: #a0e6bf;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.menu {
+  max-height: min(280px, 35dvh);
+  overflow-y: auto;
+  border-radius: 8px;
+}
+
+.notice,
+.error {
+  margin: 0;
+  padding: 12px 8px;
+  color: var(--lb-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.error {
+  color: #ffc0c5;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--lb-text);
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.option:focus {
+  outline: none;
+  border-color: rgba(183, 164, 255, 0.5);
+  background: linear-gradient(110deg, rgba(135, 107, 228, 0.25), rgba(102, 128, 220, 0.12));
+}
+
+.option[aria-checked='true'] {
+  color: #a0e6bf;
+}
+
+.modelName {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+@keyframes open {
+  from { opacity: 0; transform: translateY(6px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    right: -92px;
+  }
+}

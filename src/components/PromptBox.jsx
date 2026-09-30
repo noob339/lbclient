@@ -9,6 +9,8 @@ export default function PromptBox({
   onSubmit,
   onHalt,
   querying,
+  selectedModel,
+  onSelectModel,
 }) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
@@ -29,7 +31,7 @@ export default function PromptBox({
       />
 
       <div className={styles.controls}>
-        <SelectModelBtn />
+        <SelectModelBtn selectedModel={selectedModel} onSelectModel={onSelectModel} />
         <HaltBtn onClick={onHalt} disabled={!querying} />
         <SubmitBtn onClick={onSubmit} disabled={querying || !prompt.trim()} />
       </div>

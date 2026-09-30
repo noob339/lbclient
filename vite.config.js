@@ -8,6 +8,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/query": "http://localhost:8080",
+            "/model-list": "http://localhost:8080",
             "/set_context": "http://localhost:8080",
             "/set_parameter": "http://localhost:8080",
             "/set_base_model": "http://localhost:8080",

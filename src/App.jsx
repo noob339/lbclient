@@ -9,6 +9,7 @@ export default function App() {
     const [prompt, setPrompt] = useState("");
     const [messages, setMessages] = useState([]);
     const [querying, setQuerying] = useState(false);
+    const [selectedModel, setSelectedModel] = useState('');
     const abortRef = useRef(null);
 
     const handleSubmit = () => {
@@ -91,6 +92,8 @@ export default function App() {
                     onSubmit={handleSubmit}
                     onHalt={handleHalt}
                     querying={querying}
+                    selectedModel={selectedModel}
+                    onSelectModel={setSelectedModel}
                 />
             </main>
         </div>
