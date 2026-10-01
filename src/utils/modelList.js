@@ -1,3 +1,10 @@
+export function getModelSource({ name, model, parent }) {
+  if (name.toLowerCase().includes('cloud')) return '';
+  if (model && model !== name) return model;
+  if (parent && parent !== name) return parent;
+  return '';
+}
+
 export async function getModelList(signal) {
   let response;
 
@@ -17,13 +24,15 @@ export async function getModelList(signal) {
     models = await response.json();
   } catch (error) {
     if (error.name === 'AbortError') throw error;
-    throw new Error('The model-list server did not return a JSON array of model names.', { cause: error });
+    throw new Error('The model-list server did not return a JSON array of model objects.', { cause: error });
   }
 
   // Guard the response shape so an unfinished endpoint cannot break the menu.
-  if (!Array.isArray(models) || models.some((model) => typeof model !== 'string' || !model.trim())) {
-    throw new Error('The model-list server did not return a JSON array of model names.');
+  if (!Array.isArray(models) || models.some((entry) =>
+    !entry || typeof entry.name !== 'string' || !entry.name.trim()
+    || typeof entry.model !== 'string' || typeof entry.parent !== 'string')) {
+    throw new Error('The model-list server did not return a JSON array of model objects.');
   }
 
-  return [...new Set(models)];
+  return models;
 }

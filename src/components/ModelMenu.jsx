@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { getModelSource } from '../utils/modelList';
 import styles from './ModelMenu.module.css';
 
 export default function ModelMenu({ id, models, loading, error, selectedModel, onSelect }) {
@@ -6,7 +7,7 @@ export default function ModelMenu({ id, models, loading, error, selectedModel, o
   const optionRefs = useRef([]);
 
   useEffect(() => {
-    const selectedIndex = Math.max(0, models.indexOf(selectedModel));
+    const selectedIndex = Math.max(0, models.findIndex(({ name }) => name === selectedModel));
     (optionRefs.current[selectedIndex] ?? menuRef.current)?.focus();
   }, [models, selectedModel]);
 
@@ -46,22 +47,34 @@ export default function ModelMenu({ id, models, loading, error, selectedModel, o
         {!loading && !error && models.length === 0 && (
           <p className={styles.notice} role="status">No models available.</p>
         )}
-        {models.map((model, index) => (
-          <button
-            key={model}
-            ref={(element) => { optionRefs.current[index] = element; }}
-            type="button"
-            role="menuitemradio"
-            aria-checked={model === selectedModel}
-            tabIndex={-1}
-            className={styles.option}
-            onMouseEnter={(event) => event.currentTarget.focus({ preventScroll: true })}
-            onClick={() => onSelect(model)}
-          >
-            <span className={styles.modelName}>{model}</span>
-            {model === selectedModel && <span aria-hidden="true">✓</span>}
-          </button>
-        ))}
+        {models.map((model, index) => {
+          const source = getModelSource(model);
+          return (
+            <button
+              key={model.name}
+              ref={(element) => { optionRefs.current[index] = element; }}
+              type="button"
+              role="menuitemradio"
+              aria-checked={model.name === selectedModel}
+              aria-label={source ? `${model.name}, based on ${source}` : model.name}
+              tabIndex={-1}
+              className={styles.option}
+              onMouseEnter={(event) => event.currentTarget.focus({ preventScroll: true })}
+              onClick={() => onSelect(model.name)}
+            >
+              <span className={styles.modelDetails}>
+                <span className={styles.modelName}>{model.name}</span>
+                {source && (
+                  <span className={styles.source}>
+                    <span className={styles.sourceArrow} aria-hidden="true">↳</span>
+                    <span>{source}</span>
+                  </span>
+                )}
+              </span>
+              {model.name === selectedModel && <span aria-hidden="true">✓</span>}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
